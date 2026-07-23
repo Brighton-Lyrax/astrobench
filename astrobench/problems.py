@@ -10,13 +10,17 @@ from typing import Iterator
 PROBLEMS_DIR = Path(__file__).parent.parent / "problems"
 
 
-def load_problems(category: str | None = None, difficulty: str | None = None) -> list[dict]:
-    """Load all problems, optionally filtered by category and/or difficulty."""
+def load_problems(category: str | None = None, difficulty: str | None = None,
+                  categories: list[str] | None = None) -> list[dict]:
+    """Load all problems, optionally filtered by category/categories and/or difficulty."""
     results: list[dict] = []
     for yml in sorted(PROBLEMS_DIR.glob("*.yaml")):
         data = yaml.safe_load(yml.read_text())
         for p in data.get("problems", []):
-            if category and p.get("category") != category:
+            cats_in = (categories or [])
+            if category:
+                cats_in = cats_in + [category]
+            if cats_in and p.get("category") not in cats_in:
                 continue
             if difficulty and p.get("difficulty") != difficulty:
                 continue

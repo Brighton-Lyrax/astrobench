@@ -52,7 +52,7 @@ def run_benchmark(
         by_category.setdefault(cat, []).append(g["score"])
 
     overall = (
-        sum(1 for r in results if r["passed"]) / len(passed_total or results)
+        sum(1 for r in results if r["passed"]) / (passed_total or len(results))
         if results
         else 0.0
     )
