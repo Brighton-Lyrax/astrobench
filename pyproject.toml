@@ -20,3 +20,16 @@ dependencies = [
 
 [project.scripts]
 astrobench = "astrobench.cli:cli"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["astrobench*"]
+exclude = ["tests*"]
+
+[tool.setuptools.package-data]
+astrobench = ["py.typed", "templates/*.html", "problems/*.yaml"]
+
+[project.urls]
+Homepage = "https://github.com/Brighton-Lyrax/astrobench"
+Repository = "https://github.com/Brighton-Lyrax/astrobench"
+Issues = "https://github.com/Brighton-Lyrax/astrobench/issues"
