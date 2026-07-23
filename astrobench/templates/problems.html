@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Problems · AstroBench</title>
+  <style>
+    :root{--bg:#06070b;--panel:#10131d;--line:#1d2133;--text:#e2e8ff;--muted:#8a93b8;--accent:#6ea8fe;--accent2:#b48eff;--success:#3dcc7a;--warn:#f0b232;--danger:#f0526c}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:ui-monospace,monospace;padding:32px 24px}
+    h1{margin:0 0 20px;font-size:18px}
+    a{color:var(--accent);text-decoration:none}
+    .prob{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px 20px;margin:10px 0}
+    .prob h3{margin:0 0 4px;font-size:13px;color:var(--muted)}
+    .prompt{font-size:13px;line-height:1.6;white-space:pre-wrap;margin:8px 0}
+    .tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+    .tag{padding:2px 8px;border-radius:6px;border:1px solid var(--line);font-size:11px;color:var(--muted)}
+    .cat{border-color:var(--accent);color:var(--accent)}
+    .ez{border-color:var(--success);color:var(--success)}
+    .med{border-color:var(--warn);color:var(--warn)}
+    .hard{border-color:var(--danger);color:var(--danger)}
+    footer{color:var(--muted);margin-top:24px}
+  </style>
+</head>
+<body>
+  <nav><a href="/">← Back</a></nav>
+  <h1>AstroBench Problem Set · {{ problems|length }} problems</h1>
+  {% for p in problems %}
+  {% set diff = p.difficulty %}
+  <div class="prob">
+    <h3>{{ p.id }}</h3>
+    <div class="tags">
+      <span class="tag cat">{{ p.category }}</span>
+      {% if diff == "easy" %}<span class="tag ez">{{ diff }}</span>
+      {% elif diff == "medium" %}<span class="tag med">{{ diff }}</span>
+      {% else %}<span class="tag hard">{{ diff }}</span>{% endif %}
+      <span class="tag">threshold {{ (p.passing_threshold * 100) | int }}%</span>
+    </div>
+    <div class="prompt">{{ p.prompt }}</div>
+  </div>
+  {% endfor %}
+  <footer>AstroBench · MIT License</footer>
+</body>
+</html>

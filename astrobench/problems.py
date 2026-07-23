@@ -7,7 +7,7 @@ import yaml
 from pathlib import Path
 from typing import Iterator
 
-PROBLEMS_DIR = Path(__file__).resolve().parent.parent / "problems"
+PROBLEMS_DIR = Path(__file__).resolve().parent / "problems"
 
 
 def load_problems(category: str | None = None, difficulty: str | None = None,

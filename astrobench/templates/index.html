@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <style>
+    :root{
+      --bg:#06070b;--panel:#10131d;--line:#1d2133;--text:#e2e8ff;
+      --muted:#8a93b8;--accent:#6ea8fe;--accent2:#b48eff;
+      --success:#3dcc7a;--danger:#f0526c;--warn:#f0b232;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;line-height:1.55}
+    a{color:var(--accent)}
+    header{
+      border-bottom:1px solid var(--line);
+      padding:22px 40px;
+      display:flex;align-items:center;justify-content:space-between;gap:20px;
+      flex-wrap:wrap;
+    }
+    header h1{font-size:20px;letter-spacing:.04em;margin:0;display:flex;align-items:center;gap:12px}
+    header h1::before{content:"";display:inline-block;width:18px;height:18px;border-radius:50%;background:conic-gradient(var(--accent),var(--accent2),var(--accent))}
+    nav a{color:var(--muted);text-decoration:none;margin-left:22px;font-size:13px;letter-spacing:.04em}
+    nav a:hover{color:var(--text)}
+    main{max-width:1100px;margin:0 auto;padding:40px 24px}
+    .hero{margin:40px 0 60px}
+    .hero h2{font-size:44px;line-height:1.2;margin:0 0 16px}
+    .hero h2 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .hero p{color:var(--muted);font-size:15px;max-width:640px}
+    .badge{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid var(--line);font-size:12px;color:var(--muted);margin-right:6px}
+    .badge.accent{border-color:var(--accent);color:var(--accent)}
+    .badge.success{border-color:var(--success);color:var(--success)}
+    .pills{margin:10px 0 20px}
+    .question{margin:16px 0}
+    .question summary{font-size:14px;color:var(--muted);cursor:pointer;padding:6px}
+    .question summary:hover{color:var(--text)}
+    .question pre{margin:6px 0 16px;padding:14px;background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:auto}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:24px 0 40px}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px}
+    .card h3{margin:0 0 6px;font-size:13px;color:var(--muted)}
+    .card p{margin:0;font-size:28px;font-weight:bold}
+    .card small{color:var(--muted);font-size:12px}
+    footer{border-top:1px solid var(--line);padding:16px 24px;color:var(--muted);font-size:12px;text-align:center}
+    code{background:#1a1f2e;padding:2px 6px;border-radius:4px;font-size:13px}
+    .cta{display:inline-block;padding:10px 18px;border-radius:8px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#02020c;text-decoration:none;font-weight:bold;margin-top:12px;font-size:14px}
+  </style>
+</head>
+<body>
+<header>
+  <h1>AstroBench</h1>
+  <nav>
+    <a href="/problems">Problems</a>
+    <a href="/leaderboard">Leaderboard</a>
+    <a href="https://github.com/Brighton-Lyrax/astrobench">GitHub</a>
+  </nav>
+</header>
+<main>
+  <section class="hero">
+    <div class="pills">
+      <span class="badge accent">Open Benchmark</span>
+      <span class="badge">{{ problem_count }} problems</span>
+      <span class="badge">{{ categories | length }} categories</span>
+    </div>
+    <h2>Can your model <span>think like an astrophysicist?</span></h2>
+    <p>AstroBench is a rigorously engineered LLM benchmark built from real quantitative astrophysics.
+       It's the only open benchmark in the space that targets reasoning, derivation, and unit-correct
+       quantitative problem solving across cosmology, exoplanets, stellar physics, general relativity,
+       and data analysis. No multiple choice. No trivia.</p>
+    <a href="/problems" class="cta">View the problem set →</a>
+  </section>
+  <section>
+    <details class="question">
+      <summary>Why astrophysics?</summary>
+      <pre>Astrophysics problems encode real domain reasoning: algebra + physics intuition + multi-step
+derivations. They’re more discriminating than coding benchmarks (where memorization helps)
+and genuinely scientific (not trivia). Your PhD background in astrophysics gives us curated
+problems with real reference solutions — impossible to game with web-scraping alone.</pre>
+    </details>
+    <details class="question">
+      <summary>How is this different from MMLU, GSM8K, etc.?</summary>
+      <pre>Those are broad-domain multiple-choice. AstroBench uses fully quantitative open-response
+problems with reference-solution grading. A model can’t luck into the right answer without
+showing correct reasoning, units, and numerical accuracy.</pre>
+    </details>
+    <details class="question">
+      <summary>How do I submit a result?</summary>
+      <pre>Run: astrobench run --provider openai --model gpt-4o --output result.json
+Then open: astrobench submit https://github.com/Brighton-Lyrax/astrobench</pre>
+    </details>
+  </section>
+</main>
+<footer>
+  © 2026 AstroBench · Open-source under MIT · Made with starlight and LLM disagreements
+</footer>
+</body>
+</html>

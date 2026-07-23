@@ -15,9 +15,9 @@ from fastapi.templating import Jinja2Templates
 from astrobench.submit import run_benchmark
 from astrobench.problems import load_problems, iter_categories, PROBLEMS_DIR
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent
 STATIC_DIR = BASE_DIR / "static"
-TEMPLATES_DIR = BASE_DIR / "web" / "templates"
+TEMPLATES_DIR = BASE_DIR / "templates"
 
 app = FastAPI(title="AstroBench", version="0.1.0")
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")

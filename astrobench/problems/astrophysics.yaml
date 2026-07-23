@@ -1,0 +1,202 @@
+# Problems distribution by category:
+#   cosmology, stellar, orbital, exoplanet, gr, n_body, high_z, instrumental
+#   measurement, data_analysis, transient, interstellar
+
+categories:
+  - cosmology
+  - stellar
+  - orbital
+  - exoplanet
+  - gr
+  - n_body
+  - high_z
+  - instrumental
+  - measurement
+  - data_analysis
+  - transient
+  - interstellar
+
+problems:
+  - id: COS-001
+    category: cosmology
+    difficulty: easy
+    prompt: |
+      Hubble's law states v = H0 * d. Given H0 = 70 km/s/Mpc and a galaxy redshift z=0.05,
+      estimate its recession velocity and distance in Mpc. Assume v << c so no relativistic
+      correction is needed. State the cosmological principle your calculation relies on.
+    reference_answer: "v ≈ 15000 km/s, d ≈ 214.3 Mpc. Cosmological principle: the universe is homogeneous and isotropic on large scales."
+    passing_threshold: 0.65
+
+  - id: COS-002
+    category: cosmology
+    difficulty: medium
+    prompt: |
+      The cosmic microwave background (CMB) temperature is 2.725 K today. What was the CMB
+      temperature when the universe was at redshift z=1100 (the epoch of recombination)?
+      Give your answer to 2 decimal places.
+    reference_answer: "T ≈ 3000.75 K (T = T0 * (1+z) = 2.725 * 1101 ≈ 3000.75)"
+    passing_threshold: 0.7
+
+  - id: STELL-001
+    category: stellar
+    difficulty: easy
+    prompt: |
+      A main-sequence star has an effective temperature of 6000 K and radius of 1.0 solar radii.
+      Use the Stefan-Boltzmann law (L * 4πR² = σT⁴) to estimate its luminosity in solar units,
+      assuming the Sun has Teff = 5778 K.
+    reference_answer: "L ≈ (Teff/5778)^4 ≈ (6000/5778)^4 ≈ 1.12 solar luminosities"
+    passing_threshold: 0.65
+
+  - id: ORB-001
+    category: orbital
+    difficulty: easy
+    prompt: |
+      A satellite orbits a planet in a circular orbit with radius 42,000 km.
+      The gravitational constant times the planet's mass is GM = 5.0 × 10¹³ m³/s².
+      What is the orbital period in minutes? Use Kepler's third law: T = 2πr / v.
+    reference_answer: "v = sqrt(GM/r) ≈ 24,504 m/s. T = 2π * 42,000,000 / 24,504 ≈ 10,771 s ≈ 179.5 minutes."
+    passing_threshold: 0.6
+
+  - id: ORB-002
+    category: orbital
+    difficulty: medium
+    prompt: |
+      For a circular orbit at altitude h above Earth's surface, show that the orbital period
+      obeys T² = 4π²(R⊕ + h)³ / (GM⊕). Given R⊕ = 6371 km, GM⊕ = 3.986 × 10¹⁴ m³/s²,
+      what is the period of a low Earth orbit satellite at h = 400 km?
+    reference_answer: "T = 2π * sqrt((6371+400)³ / 3.986e14) ≈ 5555 s ≈ 92.6 min"
+    passing_threshold: 0.7
+
+  - id: EXO-001
+    category: exoplanet
+    difficulty: medium
+    prompt: |
+      A transiting exoplanet causes a 1.0% dip in its host star's flux. If the host star is
+      identical to the Sun (R⊕ = 6.957e8 m, R_J = 6.9911e7 m), what is the exoplanet's radius
+      in Jupiter radii? Assume no limb-darkening correction.
+    reference_answer: "Rp/R* = sqrt(0.01) = 0.1. Rp = R_J * 0.1 * (R*/R_J) = 0.1 * (6.957e8 / 6.9911e7) ≈ 0.995 RJ ≈ 1.0 Jupiter radii."
+    passing_threshold: 0.7
+
+  - id: GR-001
+    category: gr
+    difficulty: medium
+    prompt: |
+      The Schwarzschild radius of a black hole of mass M is Rs = 2GM/c².
+      What is Rs for a 10 solar-mass black hole? Give your answer in kilometers.
+      Use G = 6.674e-11, M_sun = 1.989e30 kg, c = 3.0e8 m/s.
+    reference_answer: "Rs = 2 * 6.674e-11 * 10 * 1.989e30 / (3.0e8)² ≈ 29,530 m ≈ 29.5 km"
+    passing_threshold: 0.7
+
+  - id: GR-002
+    category: gr
+    difficulty: hard
+    prompt: |
+      Two identical clocks are synchronized at sea level. One is placed at altitude h = 2000 m,
+      and the other stays at sea level. Using the weak-field gravitational redshift approximation
+      Δf/f ≈ gh/c², calculate the fractional frequency difference. Is the high clock ahead or behind?
+      Use g = 9.81 m/s², c = 3.0e8 m/s.
+    reference_answer: "Δf/f = 9.81 * 2000 / (3e8)² = 2.18e-13. Clocks at higher altitude tick FASTER."
+    passing_threshold: 0.75
+
+  - id: N_BODY-001
+    category: n_body
+    difficulty: easy
+    prompt: |
+      In a reduced two-body problem, a planet of negligible mass orbits a star of mass M.
+      Show that the reduced two-body Hamiltonian reduces to the Kepler problem with the central
+      mass M when the reduced mass μ approaches m1*m2/(m1+m2) ≈ m2 (since m2 << m1).
+    reference_answer: "H = p²/(2μ) - GMμ/r. Substitute μ → m2 when m2<<m1 gives H ≈ p²/(2m2) - GMm2/r."
+    passing_threshold: 0.6
+
+  - id: HIGHZ-001
+    category: high_z
+    difficulty: medium
+    prompt: |
+      A galaxy at redshift z=6 has an observed luminosity L_obs = 10¹² L☉ in the rest-frame
+      optical. Compute the rest-frame luminosity, using L_rest = L_obs × (1+z)⁴ in the Euclidean
+      approximation. Give your answer in solar luminosities to 3 significant figures.
+    reference_answer: "L_rest = 1e12 * (1+6)^4 = 1e12 * 7⁴ = 1e12 * 2401 = 2.40e15 L☉"
+    passing_threshold: 0.7
+
+  - id: INSTR-001
+    category: instrumental
+    difficulty: medium
+    prompt: |
+      A CCD detector has a readout noise of 5 e⁻ rms, dark current of 0.01 e⁻/s/pixel,
+      and is observed for 300 seconds. What is the total noise per pixel from readout and
+      dark current, assuming Poisson statistics? Give answer in electrons, rounded to 3 s.f.
+    reference_answer: "Dark noise = sqrt(0.01 * 300) = 1.73 e-. Total = sqrt(5² + 1.73²) = sqrt(26 + 3) ≈ 5.29 e-"
+    passing_threshold: 0.65
+
+  - id: MEAS-001
+    category: measurement
+    difficulty: easy
+    prompt: |
+      In astrometry, the standard error on a parallax measurement π is σ_π. What is the
+      fractional distance error σ_d / d in terms of sig_π and π? Given π = 50 milliarcsec
+      with σ = 5 mas, what is the relative distance uncertainty fraction?
+    reference_answer: "σ_d/d = σ_π/π = 5/50 = 0.10 for the relative uncertainty. Fractional distance error is sig_π/π."
+    passing_threshold: 0.65
+
+  - id: TRANS-001
+    category: transient
+    difficulty: medium
+    prompt: |
+      A Type Ia supernova peaks at absolute magnitude M = -19.3 in the B-band. An observer
+      measures its apparent magnitude m = 15.1, and gives a distance modulus μ. Compute the
+      luminosity distance d_L in parsecs using the distance modulus formula: m - M = 5 log₁₀(d_L) - 5.
+    reference_answer: "μ = 15.1 - (-19.3) = 34.4 = 5 * log(d_L) - 5 -> log(d_L) = 39.4/5 = 7.88 -> d_L = 10^7.88 = 75.9 Mpc."
+    passing_threshold: 0.65
+
+  - id: STELL-002
+    category: stellar
+    difficulty: hard
+    prompt: |
+      The mass-luminosity relation for main-sequence stars is roughly L ∝ M^α with α ≈ 3.5.
+      Estimate the lifetime of a 15 M☉ star relative to the Sun, given t ∝ M / L.
+      Express your answer as a fraction of the Sun's lifetime.
+    reference_answer: "t/t_sun = (15/1) / (15^3.5) ≈ 15 / 870.6 ≈ 0.017. ~1.7% of the Sun's lifetime ≈ 340 Myr."
+    passing_threshold: 0.75
+
+  - id: EXO-002
+    category: exoplanet
+    difficulty: hard
+    prompt: |
+      For a planet on a circular orbit, the equilibrium temperature is T_eq = T* * (R* / 2a)^0.5 * (A_B)^(0.25).
+      Given a host star at T* = 5800 K, R* = 1.2 R_sun, a = 0.3 AU, and A_B = 0.3,
+      estimate T_eq. Use a = 0.3 AU, R_sun = 6.957e8 m, AU = 1.496e11 m.
+    reference_answer: "T_eq = 5800 * sqrt(1.2*6.957e8 / (2*0.3*1.496e11)) * 0.3^0.25 = 5800 * 0.0317 * 0.741 = 136 K."
+    passing_threshold: 0.75
+
+  - id: DATA-001
+    category: data_analysis
+    difficulty: medium
+    prompt: |
+      Explain why a histogram of observed (O - E) values for χ² goodness-of-fit follows a
+      normal distribution with μ = 0 and σ when the model is correct. What is the expected
+      shape of the cumulative distribution for correctly measured residuals?
+    reference_answer: "By the central limit theorem, O-E ~ N(0, σ²) for large n. The CDF is the integral of N(0,σ), giving the standard normal CDF Φ(x)."
+    passing_threshold: 0.7
+
+  - id: ISM-001
+    category: interstellar
+    difficulty: hard
+    prompt: |
+      The interstellar reddening follows E(B-V) = A_V / R_V, with R_V ≈ 3.1.
+      For a star with observed magnitude m_V = 12.0, extinction A_V = 1.24 mag,
+      and intrinsic colour (B-V)_0 = 0.0, what is its observed (B-V) colour?
+      (Assume m_B = m_V + (B-V).)
+    reference_answer: "E(B-V) = 1.24/3.1 = 0.40. (B-V)_obs = (B-V)_0 + E(B-V) = 0.0 + 0.40 = 0.40 mag. m_V_intrinsic = m_V - A_V = 10.76 mag."
+    passing_threshold: 0.75
+
+  - id: COS-003
+    category: cosmology
+    difficulty: hard
+    prompt: |
+      The luminosity distance in a flat ΛCDM universe is:
+        d_L = (1+z) * c/H0 * integral_0^z dz'/E(z')
+      where E(z') = sqrt(Ω_m(1+z')³ + Ω_Λ + Ω_r(1+z')⁴). For z=1 with Ω_m=0.3, Ω_Λ=0.7,
+      Ω_r≈0, roughly estimate d_L using numerical approximation H0=70 km/s/Mpc, c=3e5 km/s.
+      Provide your answer in Mpc to within 20% of the analytic/well-known value.
+    reference_answer: "d_L ≈ (1+1) * 4286 * 0.80 Mpc ≈ 6,857 Mpc. True value ~6700 Mpc; within 20%."
+    passing_threshold: 0.6
